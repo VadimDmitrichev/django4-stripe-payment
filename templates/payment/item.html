@@ -1,0 +1,33 @@
+{% extends 'payment/base.html' %}
+
+{% block title %} {{ item.name }} {% endblock %}
+{% block content %}
+<section class="my-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card mb-3" style="max-width: 1000px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="https://cdn.vectorstock.com/i/preview-1x/82/99/no-image-available-like-missing-picture-vector-43938299.jpg"
+                                 class="img-fluid rounded-start" alt="no_img">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ item.name }}</h5>
+                                <p class="card-text">{{ item.description }}</p>
+                                <p class="fw-bold">${{ item.get_display_price }}</p>
+                                <form action="{% url 'buy' item.id %}" method="GET">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-success">Buy</button>
+                                </form>
+                                <a href="{% url 'add' item.id %}" class="btn btn-primary my-2">Add to Order</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

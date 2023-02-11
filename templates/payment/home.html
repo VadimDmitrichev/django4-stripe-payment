@@ -1,0 +1,32 @@
+{% extends 'payment/base.html' %}
+
+{% block title %} Home {% endblock %}
+{% block content %}
+<section>
+    <div class="container">
+        <div class="row mb-3">
+            {% if alert  %}
+            <div class="alert alert-success" role="alert">
+                {{ alert }}
+            </div>
+            {% endif %}
+            {% for item in items %}
+            <div class="col-sm-6 my-3 mb-sm-0">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{% url 'item' item.id %}">{{ item.name }}</a></h5>
+                        <p class="card-text">{{ item.description|striptags|truncatechars:100 }}</p>
+                        <form action="{% url 'buy' item.id %}" method="GET" class="mb-3">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-success">Buy</button>
+                        </form>
+                        {% csrf_token %}
+                        <a href="{% url 'add' item.id %}" class="btn btn-primary">Add to Order</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
