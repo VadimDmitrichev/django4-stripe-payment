@@ -57,7 +57,7 @@ class CreateCheckoutSessionView(View):
 	def get(self, requests, *args, **kwargs):
 		item_id = self.kwargs['pk']
 		item = Item.objects.get(id=item_id)
-		DOMAIN = 'http://127.0.0.1:8000'
+		DOMAIN = 'https://django4-stripe-payment-production.up.railway.app'
 		checkout_session = stripe.checkout.Session.create(
 			line_items=[
 				{
