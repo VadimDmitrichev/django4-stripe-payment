@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-rc+e5o7b)_*oz*=51pl#-t_or0n#m%eic1^4+lby-4szq&6375'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['django4-stripe-payment-production.up.railway.app']
 
