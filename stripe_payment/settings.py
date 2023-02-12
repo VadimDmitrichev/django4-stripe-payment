@@ -131,6 +131,10 @@ STRIPE_WEBHOOK_SECRET = os.getenv('STRIPE_WEBHOOK_SECRET')
 
 CSRF_TRUSTED_ORIGINS = ['https://*.django4-stripe-payment-production.up.railway.app', 'https://*.127.0.0.1']
 
+AUTHENTICATION_BACKENDS = (
+	('django.contrib.auth.backends.ModelBackend'),
+)
+
 try:
 	from .local_settings import *
 except ImportError:
